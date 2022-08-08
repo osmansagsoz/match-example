@@ -1,6 +1,8 @@
 import { useSelector } from "react-redux";
 import { PokemonHolder } from "./PokemonHolder";
 import { TypeHolder } from "./TypeHolder";
+import { ImageBox } from "./ImageBox";
+import { TypeBox } from "./TypeBox";
 
 export const Holder = () => {
   const { pokemons } = useSelector((store) => store.pokemon);
@@ -11,6 +13,8 @@ export const Holder = () => {
   return (
     <div className="holder">
       <PokemonHolder randomPokemons={randomPokemons} />
+      <ImageBox randomPokemons={randomPokemons} />
+      <TypeBox randomPokemons={randomPokemons} />
       <TypeHolder randomPokemons={randomPokemons} />
     </div>
   );

@@ -1,11 +1,17 @@
+import { TypeEl } from "./TypeEl";
 
+export const TypeHolder = ({ randomPokemons }) => {
+  const shuffledPokemons2 = randomPokemons.sort(() => 0.5 - Math.random());
 
-export const TypeHolder = ({randomPokemons}) => {
-    return (<div className="typeHolder">
-        <ul>
-            {randomPokemons.map(pokemon => {
-                return <li key={pokemon.id}>{pokemon.types[0].type.name}</li>
-            })}
-        </ul>
-    </div>);
-}
+  return (
+    <div className="typeHolder">
+      <ul>
+        {shuffledPokemons2.map((pokemon) => {
+          return (
+            <TypeEl key={pokemon.id} types={pokemon.types} id={pokemon.id} />
+          );
+        })}
+      </ul>
+    </div>
+  );
+};

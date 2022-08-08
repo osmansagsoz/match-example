@@ -7,8 +7,6 @@ const initialState = {
 
 const url = "https://pokeapi.co/api/v2/pokemon/";
 
-const randomNumber = () => Math.floor(Math.random() * 100);
-
 export const fetchPokemon = createAsyncThunk(
   "pokemon/fetchPokemon",
   async () => {

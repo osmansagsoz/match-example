@@ -1,8 +1,8 @@
 import { useDrag } from "react-dnd";
 
-export const PokemonImage = ({ id, name, url }) => {
+export const TypeEl = ({ id, types }) => {
   const [{ isDragging }, drag] = useDrag(() => ({
-    type: "image",
+    type: "type",
     item: { id },
     collect: (monitor) => ({
       isDragging: !!monitor.isDragging(),
@@ -11,11 +11,10 @@ export const PokemonImage = ({ id, name, url }) => {
 
   return (
     <li
-      className="pokemonImage"
       ref={drag}
       style={{ border: isDragging ? "4px solid var(--red)" : "0px" }}
     >
-      <img src={url} alt={name} />
+      {types[0].type.name}
     </li>
   );
 };

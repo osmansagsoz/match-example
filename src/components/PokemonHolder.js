@@ -1,15 +1,20 @@
 import { PokemonImage } from "./PokemonImage";
 
-export const PokemonHolder = ({randomPokemons}) => {
-
+export const PokemonHolder = ({ randomPokemons }) => {
   return (
     <div className="pokemonHolder">
       <ul>
-        {randomPokemons.map(pokemon => {
-          return <PokemonImage key={pokemon.name} url={pokemon.sprites.front_default} />
+        {randomPokemons.map((pokemon) => {
+          return (
+            <PokemonImage
+              key={pokemon.id}
+              url={pokemon.sprites.front_default}
+              name={pokemon.name}
+              id={pokemon.id}
+            />
+          );
         })}
       </ul>
     </div>
   );
 };
-
