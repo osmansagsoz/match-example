@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { useSelector } from "react-redux";
 import { PokemonHolder } from "./PokemonHolder";
 import { TypeHolder } from "./TypeHolder";
@@ -6,9 +7,11 @@ import { TypeBox } from "./TypeBox";
 
 export const Holder = () => {
   const { pokemons } = useSelector((store) => store.pokemon);
-  const copyPokemons = [...pokemons];
-  const shuffledPokemons = copyPokemons.sort(() => 0.5 - Math.random());
-  const randomPokemons = shuffledPokemons.slice(0, 5);
+
+  const randomPokemons = useMemo(
+    () => pokemons.slice().sort(() => 0.5 - Math.random()).slice(0, 5),
+    [pokemons]
+  );
 
   return (
     <div className="holder">
