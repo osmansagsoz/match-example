@@ -4,21 +4,25 @@ import { PokemonImage } from "./PokemonImage";
 
 export const ImageBox = ({randomPokemons}) => {
   const [imageBox, setImageBox] = useState([]);
+
+  const addImageToBox = useCallback(
+    (id) => {
+      console.log(randomPokemons);
+      const imageToAdd = randomPokemons.filter((pokemon) => pokemon.id === id);
+      console.log(imageToAdd);
+      setImageBox((prev) => [...prev, imageToAdd[0]]);
+      console.log(imageBox);
+    },
+    [imageBox, randomPokemons]
+  );
+
   const [{ isOver }, drop] = useDrop(() => ({
     accept: "image",
     drop: (item) => (addImageToBox(item.id)),
     collect: (monitor) => ({
       isOver: !!monitor.isOver(),
     }),
-  }));
-
-  const addImageToBox = useCallback((id) => {
-    console.log(randomPokemons);
-    const imageToAdd = randomPokemons.filter((pokemon) => pokemon.id === id);
-    console.log(imageToAdd);
-    setImageBox(prev => [...prev, imageToAdd[0]]);
-    console.log(imageBox);
-  }, [imageBox, randomPokemons]);
+  }), [randomPokemons]);
 
   return (
     <div
